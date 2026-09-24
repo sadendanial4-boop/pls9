@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fine Print — PLS 210 Research Proposal</title>
+<style>
+:root{
+  --ink:#1a1f2b; --paper:#faf7f1; --line:#d8d0c0; --accent:#b5502f; --accent2:#2f5b4f;
+  --muted:#6b6357;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--ink:#f2ede2;--paper:#181613;--line:#3a352c;--muted:#a89f8e;}
+}
+:root[data-theme="dark"]{--ink:#f2ede2;--paper:#181613;--line:#3a352c;--muted:#a89f8e;}
+html,body{height:100%;margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Iowan Old Style','Georgia',serif;overflow:hidden;}
+#deck{height:100%;width:100%;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;}
+section{height:100%;width:100%;scroll-snap-align:start;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;padding:8vh 8vw;position:relative;}
+.kicker{font-family:-apple-system,'Helvetica Neue',sans-serif;letter-spacing:.12em;text-transform:uppercase;
+  font-size:.72rem;color:var(--accent);margin-bottom:1.1rem;font-weight:600;}
+h1{font-size:clamp(2rem,5.5vw,3.4rem);line-height:1.12;margin:0 0 .6rem;max-width:16ch;text-align:center;}
+h2{font-size:clamp(1.4rem,3.4vw,2.1rem);line-height:1.2;margin:0 0 1.1rem;max-width:20ch;text-align:center;}
+p{font-size:clamp(1rem,1.7vw,1.2rem);line-height:1.55;max-width:52ch;text-align:center;color:var(--ink);}
+.muted{color:var(--muted);font-size:.95rem;}
+.tags{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1.3rem;}
+.tag{font-family:-apple-system,sans-serif;font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);
+  border-radius:99px;padding:.3rem .8rem;color:var(--muted);}
+.grid{display:grid;gap:1.4rem;width:100%;max-width:900px;margin-top:1rem;}
+.grid.cols3{grid-template-columns:repeat(3,1fr);}
+.grid.cols2{grid-template-columns:repeat(2,1fr);}
+@media(max-width:640px){.grid.cols3,.grid.cols2{grid-template-columns:1fr;}}
+.card{border:1px solid var(--line);border-radius:14px;padding:1.3rem;text-align:left;background:color-mix(in srgb, var(--paper) 92%, var(--ink) 8%);}
+.card h3{margin:0 0 .4rem;font-size:1.05rem;}
+.card p{font-size:.92rem;text-align:left;max-width:none;color:var(--muted);margin:0;}
+.num{font-family:-apple-system,sans-serif;font-weight:700;color:var(--accent);font-size:.85rem;margin-bottom:.3rem;}
+.flow{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;justify-content:center;margin-top:1.4rem;}
+.box{border:1.5px solid var(--ink);border-radius:10px;padding:.9rem 1.1rem;font-family:-apple-system,sans-serif;
+  font-size:.88rem;font-weight:600;min-width:120px;text-align:center;}
+.box.mech{border-style:dashed;color:var(--accent2);border-color:var(--accent2);font-weight:500;}
+.arrow{font-size:1.4rem;color:var(--muted);}
+svg{max-width:220px;}
+table{border-collapse:collapse;width:100%;max-width:640px;font-family:-apple-system,sans-serif;font-size:.9rem;margin-top:1rem;}
+td,th{border:1px solid var(--line);padding:.6rem .8rem;text-align:left;}
+th{color:var(--muted);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;}
+ul.plain{list-style:none;padding:0;margin:1rem 0 0;max-width:560px;width:100%;}
+ul.plain li{border-top:1px solid var(--line);padding:.7rem 0;font-size:.95rem;display:flex;gap:.7rem;}
+ul.plain li .n{color:var(--accent);font-weight:700;font-family:-apple-system,sans-serif;}
+.refs{max-width:640px;width:100%;text-align:left;font-size:.82rem;color:var(--muted);line-height:1.6;}
+.refs p{text-align:left;max-width:none;font-size:.82rem;color:var(--muted);margin:0 0 .7rem;}
+nav.top{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:0;right:0;display:flex;justify-content:center;
+  gap:1.3rem;z-index:10;font-family:-apple-system,sans-serif;font-size:.72rem;letter-spacing:.05em;
+  text-transform:uppercase;pointer-events:none;flex-wrap:wrap;padding:0 1rem;}
+nav.top a{color:var(--muted);text-decoration:none;pointer-events:all;opacity:.75;}
+nav.top a:hover{color:var(--accent);opacity:1;}
+.progress{position:fixed;left:0;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);width:100%;
+  display:flex;justify-content:center;gap:6px;z-index:10;}
+.dot{width:6px;height:6px;border-radius:99px;background:var(--line);}
+.dot.active{background:var(--accent);}
+.hint{position:fixed;right:calc(env(safe-area-inset-right,0px)+16px);bottom:calc(env(safe-area-inset-bottom,0px)+12px);
+  font-family:-apple-system,sans-serif;font-size:.68rem;color:var(--muted);z-index:10;}
+</style>
+</head>
+<body>
+<nav class="top">
+  <a href="#question">Question</a><a href="#position">Position</a><a href="#framework">Framework</a>
+  <a href="#literature">Literature</a><a href="#scope">Scope</a><a href="#ai">AI</a><a href="#refs">References</a>
+</nav>
+<div class="progress" id="progress"></div>
+<div class="hint">↑ ↓ or space</div>
+
+<div id="deck">
+
+<section id="title">
+  <div class="kicker">PLS 210 · Research Proposal · Fall 2026</div>
+  <h1>Fine Print</h1>
+  <p>Does the proportionality of administrative fines shape citizens' compliance behaviour in Kazakhstan, 2019–2024?</p>
+  <div class="tags"><span class="tag">Positivist</span><span class="tag">Administrative fines</span><span class="tag">Kazakhstan</span></div>
+</section>
+
+<section id="puzzle">
+  <div class="kicker">The puzzle</div>
+  <h2>A fine is meant to correct. Some call it "Finestan."</h2>
+  <svg viewBox="0 0 200 120"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+    <line x1="100" y1="15" x2="100" y2="95"/><line x1="40" y1="35" x2="160" y2="35"/>
+    <path d="M40 35 L20 70 A20 20 0 0 0 60 70 Z"/><path d="M160 35 L140 70 A20 20 0 0 0 180 70 Z"/>
+    <line x1="75" y1="105" x2="125" y2="105"/></g></svg>
+  <p class="muted">Lawmakers, a 2018 reform, and a 2026 amnesty all point to the same question: has the fine system drifted from deterrence into revenue?</p>
+</section>
+
+<section id="question">
+  <div class="kicker">01 · Research question</div>
+  <h1 style="max-width:20ch">Does fine proportionality affect citizens' compliance behaviour?</h1>
+  <div class="tags"><span class="tag">Who: fined citizens & SMEs</span><span class="tag">Where: Kazakhstan</span><span class="tag">When: 2019–2024</span></div>
+</section>
+
+<section id="position">
+  <div class="kicker">02 · Where I stand</div>
+  <h2>Positivist</h2>
+  <div class="grid cols2">
+    <div class="card"><h3>Ontology</h3><p>Compliance is a behaviour that happened or didn't — payment, appeal, repeat offence. It can be counted.</p></div>
+    <div class="card"><h3>Epistemology</h3><p>A fine-size effect on compliance is testable against registry data, not just described.</p></div>
+  </div>
+  <p class="muted" style="margin-top:1.2rem">Cause and effect, not meaning — so measurement, not interpretation, answers it.</p>
+</section>
+
+<section id="framework">
+  <div class="kicker">03 · Hypothesis</div>
+  <h2>Disproportion breaks trust, and trust drives compliance</h2>
+  <div class="flow">
+    <div class="box">Fine proportionality<br><span class="muted" style="font-weight:400">(IV)</span></div>
+    <span class="arrow">→</span>
+    <div class="box mech">Perceived legitimacy<br><span style="font-weight:400">(mechanism)</span></div>
+    <span class="arrow">→</span>
+    <div class="box">Compliance<br><span class="muted" style="font-weight:400">(DV)</span></div>
+  </div>
+  <p class="muted" style="margin-top:1.3rem;max-width:46ch">When a fine feels disproportionate to the offence, people read it as unfair rather than corrective — and unfair rules get avoided, not obeyed. <span style="font-style:italic">(Tyler, 1990)</span></p>
+</section>
+
+<section id="literature">
+  <div class="kicker">04 · What others found</div>
+  <h2>Two traditions, one domestic debate</h2>
+  <div class="grid cols3">
+    <div class="card"><div class="num">Theory</div><h3>Procedural justice</h3><p>People obey rules they see as fair — legitimacy, not fear, drives compliance. Tyler (1990)</p></div>
+    <div class="card"><div class="num">Theory</div><h3>Deterrence</h3><p>Penalties work when proportionate, certain, and swift. Beccaria (1764)</p></div>
+    <div class="card"><div class="num">Kazakhstan</div><h3>"Finestan" critique</h3><p>A Majilis deputy argues fines should solve problems, not fund budgets — evidence proportionality is contested here.</p></div>
+  </div>
+  <div class="grid cols2" style="margin-top:0">
+    <div class="card"><div class="num">Kazakhstan</div><h3>2018 reform</h3><p>Fines cut ~30% across 150+ Code articles, easing pressure on business — the state already treats size as the problem.</p></div>
+    <div class="card"><div class="num">Kazakhstan</div><h3>Institutional trust</h3><p>Perceived corruption lowers institutional trust nationally — a plausible channel from "unfair fine" to "won't pay." Makulbayeva et al. (2025)</p></div>
+  </div>
+</section>
+
+<section id="scope">
+  <div class="kicker">05 · Scope</div>
+  <h2>Empirical, bounded, answerable</h2>
+  <table>
+    <tr><th>Empirical</th><td>Asks whether disproportionality changes behaviour — not whether it should.</td></tr>
+    <tr><th>Population</th><td>Kazakhstani citizens and SMEs fined under the Administrative Code.</td></tr>
+    <tr><th>Time</th><td>2019–2024 — the post-reform, pre-amnesty window.</td></tr>
+    <tr><th>Data</th><td>Payment, appeal, and repeat-offence rates from state registries and Atameken reporting.</td></tr>
+  </table>
+</section>
+
+<section id="expect">
+  <div class="kicker">06 · What I expect — and could be wrong</div>
+  <h2>Expectations</h2>
+  <ul class="plain">
+    <li><span class="n">1</span>Non-payment rises with fine-to-income ratio, not fine size alone.</li>
+    <li><span class="n">2</span>Repeat offences cluster around penalties seen as arbitrary.</li>
+    <li><span class="n">3</span>The 2018 reform helped, but "Finestan" complaints suggest it wasn't enough.</li>
+  </ul>
+</section>
+
+<section id="ai">
+  <div class="kicker">07 · Working with AI</div>
+  <h2>Transparency</h2>
+  <div class="grid cols2">
+    <div class="card"><h3>How AI helped</h3><p>Helped narrow the topic, structure the literature and hypothesis, and design this page.</p></div>
+    <div class="card"><h3>What stayed mine</h3><p>I chose the sources, judged their relevance, and will make the final analytic calls.</p></div>
+  </div>
+</section>
+
+<section id="refs">
+  <div class="kicker">References</div>
+  <h2>Sources</h2>
+  <div class="refs">
+    <p>Beccaria, C. (1764). <em>On crimes and punishments.</em></p>
+    <p>Makulbayeva, A. et al. (2025). Origins of institutional trust in Kazakhstan. <em>Gumilyov Journal of Sociology.</em></p>
+    <p>Tyler, T. R. (1990/2006). <em>Why people obey the law.</em> Princeton University Press.</p>
+    <p class="muted">Plus policy documentation: Majilis deputy commentary on administrative fines (Orda.kz); Atameken reporting on the 2018 Administrative Code reform; KISI research on humanising administrative liability.</p>
+  </div>
+</section>
+
+<section id="thanks">
+  <h1>Thank you</h1>
+  <p class="muted">Questions welcome.</p>
+</section>
+
+</div>
+
+<script>
+const deck=document.getElementById('deck');
+const slides=[...deck.querySelectorAll('section')];
+const progress=document.getElementById('progress');
+slides.forEach((s,i)=>{const d=document.createElement('div');d.className='dot';progress.appendChild(d);});
+function current(){
+  let idx=0,best=Infinity;
+  slides.forEach((s,i)=>{const r=Math.abs(s.getBoundingClientRect().top);if(r<best){best=r;idx=i;}});
+  return idx;
+}
+function updateDots(){const i=current();[...progress.children].forEach((d,j)=>d.classList.toggle('active',j===i));}
+deck.addEventListener('scroll',()=>{clearTimeout(window._t);window._t=setTimeout(updateDots,60);});
+updateDots();
+window.addEventListener('keydown',e=>{
+  const i=current();
+  if(e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){e.preventDefault();slides[Math.min(i+1,slides.length-1)].scrollIntoView({behavior:'smooth'});}
+  if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();slides[Math.max(i-1,0)].scrollIntoView({behavior:'smooth'});}
+});
+</script>
+</body>
+</html>
